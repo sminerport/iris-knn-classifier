@@ -1,0 +1,78 @@
+@startuml
+
+participant Main
+participant DataLoader
+participant Preprocessor
+participant CrossValidator
+participant KNearestNeighbors
+
+activate Main
+
+Main -> DataLoader : Create DataLoader instance
+activate DataLoader
+DataLoader --> Main : Return DataLoader instance
+deactivate DataLoader
+
+Main -> DataLoader : load_data()
+activate DataLoader
+DataLoader --> Main : Return dataset
+deactivate DataLoader
+
+Main -> Preprocessor : convert_to_float()
+activate Preprocessor
+Preprocessor --> Main : Update dataset with float values
+deactivate Preprocessor
+
+Main -> Preprocessor : convert_to_int()
+activate Preprocessor
+Preprocessor --> Main : Update dataset with integer values and return lookup dictionary
+deactivate Preprocessor
+
+Main -> Preprocessor : dataset_minmax()
+activate Preprocessor
+Preprocessor --> Main : Return minmax values
+deactivate Preprocessor
+
+Main -> Preprocessor : normalize_dataset()
+activate Preprocessor
+Preprocessor --> Main : Update dataset with normalized values
+deactivate Preprocessor
+
+Main -> CrossValidator : Create CrossValidator instance
+activate CrossValidator
+CrossValidator --> Main : Return CrossValidator instance
+deactivate CrossValidator
+
+Main -> CrossValidator : cross_validation_split()
+activate CrossValidator
+CrossValidator --> Main : Return folds
+deactivate CrossValidator
+
+Main -> KNearestNeighbors : Create KNearestNeighbors instance
+activate KNearestNeighbors
+KNearestNeighbors --> Main : Return KNearestNeighbors instance
+deactivate KNearestNeighbors
+
+loop for each fold
+    Main -> KNearestNeighbors : predict_all()
+    activate KNearestNeighbors
+    KNearestNeighbors --> Main : Return predictions
+    deactivate KNearestNeighbors
+
+    Main -> CrossValidator : accuracy_metric()
+    activate CrossValidator
+    CrossValidator --> Main : Return accuracy
+    deactivate CrossValidator
+end
+
+Main -> CrossValidator : evaluate_algorithm()
+activate CrossValidator
+CrossValidator --> Main : Return evaluation results
+deactivate CrossValidator
+
+destroy DataLoader
+destroy Preprocessor
+destroy CrossValidator
+destroy KNearestNeighbors
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+
+title KNN Implementation with Data Loading, Preprocessing, and Cross Validation
+
+class KNearestNeighbors {
+    -num_neighbors: int
+    +__init__(num_neighbors: int): None
+    +euclidean_distance(row1: List[float], row2: List[float]): float
+    +get_neighbors(train: List[List[float]], test_row: List[float]): List[List[float]]
+    +predict_classification(train: List[List[float]], test_row: List[float]): Union[int, str]
+    +predict_all(train: List[List[float]], test: List[List[float]]): List[Union[int, str]]
+}
+
+class DataLoader {
+    -filename: str
+    +__init__(filename: str): None
+    +load_data(): List[List[str]]
+}
+
+class Preprocessor {
+    +convert_to_float(dataset: List[List[str]], column: int): None
+    +convert_to_int(dataset: List[List[str]], column: int): Dict[str, int]
+    +normalize_dataset(dataset: List[List[float]], minmax: List[Tuple[float, float]]): None
+    +dataset_minmax(dataset: List[List[float]]): List[Tuple[float, float]]
+}
+
+class CrossValidator {
+    -n_folds: int
+    +__init__(n_folds: int): None
+    +cross_validation_split(dataset: List[List[float]]): List[List[List[float]]]
+    +accuracy_metric(actual: List[int], predicted: List[int]): float
+    +evaluate_algorithm(algorithm: Callable, dataset: List[List[float]], *args): List[float]
+}
+
+DataLoader --> KNearestNeighbors: provides data
+Preprocessor --> KNearestNeighbors: preprocesses data
+CrossValidator --> KNearestNeighbors: evaluates model
+
+@enduml

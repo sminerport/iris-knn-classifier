@@ -45,7 +45,7 @@ cd iris-knn-classifier
 3. Run the script:
 
 ```sh
-python main.py
+python src/main.py
 ```
 
 The script will train the k-NN model on the Iris dataset, using 5-fold cross-validation and 10 neighbors (you can change these values). It will print the accuracy for each fold and the mean accuracy.

@@ -58,7 +58,7 @@ After training the model, you can input your own values for sepal length, sepal 
 
 ## Customizing the Script
 
-You can customize the number of cross-validation folds and the number of neighbors in the k-NN algorithm by modifying the n_folds and num_neighbors variables in the script.
+You can customize the number of cross-validation folds and the number of neighbors in the k-NN algorithm by modifying the `n_folds` and `num_neighbors` variables in the script.
 
 ## License
 

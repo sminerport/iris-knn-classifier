@@ -2,17 +2,19 @@
 
 This repository contains a Python script that implements the k-Nearest Neighbors (k-NN) algorithm for classifying Iris flowers into three species: setosa, versicolor, and virginica. The script uses the Iris dataset, which consists of 150 samples with 4 features each: sepal length, sepal width, petal length, and petal width.
 
+The k-NN model is trained on the Iris dataset using 5-fold cross-validation and 10 neighbors, which can be changed in the script. After training, the model allows you to input your own values for sepal length, sepal width, petal length, and petal width. The model will then predict the flower category (setosa, versicolor, or virginica) based on the input provided by the user.
+
+## Class Diagram
+
 Below is an overview of the classes and their interactions in the script:
 
 ![UML Diagram](/uml/output/knn_implementation_uml/knn_implementation_uml.png)
 
-The k-NN model is trained on the Iris dataset using 5-fold cross-validation and 10 neighbors, which can be changed in the script. After training, the model allows you to input your own values for sepal length, sepal width, petal length, and petal width. The model will then predict the flower category (setosa, versicolor, or virginica) based on the input provided by the user.
-
 * **KNearestNeighbors**: This class is responsible for the k-NN algorithm implementation, including training the model and making predictions.
 
-* **DataLoader**: This class loads the Iris dataset from a file, converts string values to float, and converts class labels to integers.
+* **DataLoader**: This class loads the Iris dataset from a file.
 
-* **Preprocessor**: This class normalizes the dataset to ensure that all features are on the same scale, which is important for distance-based algorithms like k-NN.
+* **Preprocessor**: This class normalizes the dataset to ensure that all features are on the same scale, which is important for distance-based algorithms like k-NN, converts string values to float, and converts class labels to integers.
 
 * **CrossValidator**: This class evaluates the k-NN model using cross-validation. It splits the dataset into a specified number of folds and computes the accuracy for each fold. It then returns a list of accuracy scores.
 
@@ -37,7 +39,7 @@ git clone https://github.com/sminerport/iris-knn-classifier.git
 2. Navigate to the repository's directory:
 
 ```sh
-cd iris-classification-knn
+cd iris-knn-classifier
 ```
 
 3. Run the script:

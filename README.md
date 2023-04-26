@@ -8,9 +8,6 @@ Below is an overview of the classes and their interactions in the script:
 
 The k-NN model is trained on the Iris dataset using 5-fold cross-validation and 10 neighbors, which can be changed in the script. After training, the model allows you to input your own values for sepal length, sepal width, petal length, and petal width. The model will then predict the flower category (setosa, versicolor, or virginica) based on the input provided by the user.
 
-Here is the script out, with the accuracy per fold, the mean accuracy, and the prediction output with some theoretical test cases.
-
-
 * **KNearestNeighbors**: This class is responsible for the k-NN algorithm implementation, including training the model and making predictions.
 
 * **DataLoader**: This class loads the Iris dataset from a file, converts string values to float, and converts class labels to integers.
